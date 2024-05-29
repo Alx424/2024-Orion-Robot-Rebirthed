@@ -1,13 +1,13 @@
 package frc.robot.subsystems;
 
-import frc.hardware.IDrivetrainHardware;
+import frc.robot.hardware.drivetrainHardwareOI;
 import java.lang.Math;
 
 public class Drivetrain {
-    private IDrivetrainHardware hardware;
+    private drivetrainHardwareOI hardware;
     private double offsetAngle;
 
-    public Drivetrain(IDrivetrainHardware hardware) {
+    public Drivetrain(drivetrainHardwareOI hardware) {
         this.hardware = hardware;
         offsetAngle = 0; // to be tuned
     }
