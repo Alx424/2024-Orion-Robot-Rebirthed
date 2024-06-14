@@ -7,6 +7,11 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.hardware.drivetrainHardware;
+import frc.robot.oi.OperatorInterface;
+import frc.robot.subsystems.Drivetrain;
+import frc.robot.hardware.*;
+import frc.robot.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -15,6 +20,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * project.
  */
 public class Robot extends TimedRobot {
+   OperatorInterface oi;
+    Drivetrain drivetrain;
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
@@ -29,6 +36,8 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
+    oi = new OperatorInterface();
+    drivetrain = new Drivetrain(new drivetrainHardware());
   }
 
   /**
@@ -74,7 +83,14 @@ public class Robot extends TimedRobot {
 
   /** This function is called once when teleop is enabled. */
   @Override
-  public void teleopInit() {}
+  public void teleopInit() {
+    double forward = oi.getDriveTrainForward();
+    double rotate = oi.getDriveTrainRotate();
+    drivetrain.arcadeDrive(forward, rotate);
+
+
+
+  }
 
   /** This function is called periodically during operator control. */
   @Override

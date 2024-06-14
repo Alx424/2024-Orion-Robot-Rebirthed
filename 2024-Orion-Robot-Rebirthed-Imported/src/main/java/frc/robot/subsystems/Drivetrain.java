@@ -25,21 +25,21 @@ public class Drivetrain {
         hardware.setRightSidePower(rightSidePower);
     }
 
-    public void resetEncoders() {
-        hardware.resetEncoders();
-    }
+    // public void resetEncoders() {
+    //     hardware.resetEncoders();
+    // }
 
-    public double getEncoderPos() {
-        return ((hardware.getLeftEncoderPos() + hardware/getRightEncoderPos()) / 2);
-    }
+    // public double getEncoderPos() {
+    //     return ((hardware.getLeftEncoderPos() + hardware/getRightEncoderPos()) / 2);
+    // }
 
     public double getAngle() {
         return hardware.getAngle() - offsetAngle;
     }
 
-    public double getHeading() {
-        return hardware.getAngle % 360.;
-    }
+    // public double getHeading() {
+    //     return hardware.getAngle % 360.;
+    // }
 
     private double convertEncoder(double encoderPos) {
         // ratio needs to be tuned
