@@ -7,8 +7,8 @@ public class OperatorInterface implements IOperatorInterface {
     private Joystick operatorController;
 
     public OperatorInterface() {
-        drivetrainController = new Joystick(0);
-        operatorController = new Joystick(1);
+        drivetrainController = new Joystick(2);
+        operatorController = new Joystick(3);
     }
 
     @Override
@@ -19,7 +19,7 @@ public class OperatorInterface implements IOperatorInterface {
 
     @Override
     public double getDriveTrainRotate() {
-        return drivetrainController.getRawAxis(4);
+        return drivetrainController.getRawAxis(0);
     }
 
 

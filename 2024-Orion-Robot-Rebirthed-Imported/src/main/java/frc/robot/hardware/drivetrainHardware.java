@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.RobotDriveBase.MotorType;
 import edu.wpi.first.wpilibj.motorcontrol.Talon;
+import frc.robot.RobotMap;
 
 
 public class drivetrainHardware implements drivetrainHardwareOI {
@@ -18,10 +19,10 @@ public class drivetrainHardware implements drivetrainHardwareOI {
     private TalonSRX right2;
     
     public drivetrainHardware(){
-        left1 = new TalonSRX(0);
-        left2 = new TalonSRX(1);
-        right1 = new TalonSRX(2);
-        right2 =new TalonSRX(3);
+        left1 = new TalonSRX(RobotMap.DRIVE_LEFT_1);
+        left2 = new TalonSRX(RobotMap.DRIVE_LEFT_2);
+        right1 = new TalonSRX(RobotMap.DRIVE_RIGHT_1);
+        right2 =new TalonSRX(RobotMap.DRIVE_RIGHT_2);
     }
     @Override
     public void setLeftSidePower(double val) {

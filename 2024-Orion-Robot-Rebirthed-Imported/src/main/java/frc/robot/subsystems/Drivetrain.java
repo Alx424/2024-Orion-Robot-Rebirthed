@@ -21,8 +21,8 @@ public class Drivetrain {
     public void arcadeDrive(double forward, double rotate) {
         double leftSidePower = capInput(forward + rotate, -1., 1.);
         double rightSidePower = capInput(forward - rotate, -1., 1.);
-        hardware.setLeftSidePower(leftSidePower);
-        hardware.setRightSidePower(rightSidePower);
+        hardware.setLeftSidePower(leftSidePower*0.8);
+        hardware.setRightSidePower(-rightSidePower*0.8);
     }
 
     // public void resetEncoders() {

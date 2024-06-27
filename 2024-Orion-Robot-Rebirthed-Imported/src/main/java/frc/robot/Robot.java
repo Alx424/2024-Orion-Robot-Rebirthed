@@ -22,6 +22,7 @@ import frc.robot.*;
 public class Robot extends TimedRobot {
    OperatorInterface oi;
     Drivetrain drivetrain;
+    drivetrainHardwareOI drivetrainHardware;
   private static final String kDefaultAuto = "Default";
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
@@ -37,7 +38,8 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
     oi = new OperatorInterface();
-    drivetrain = new Drivetrain(new drivetrainHardware());
+    drivetrainHardware = new drivetrainHardware();
+    drivetrain = new Drivetrain(drivetrainHardware);
   }
 
   /**
@@ -48,7 +50,10 @@ public class Robot extends TimedRobot {
    * SmartDashboard integrated updating.
    */
   @Override
-  public void robotPeriodic() {}
+  public void robotPeriodic() {
+    SmartDashboard.putNumber("Drivetrain Controller Forward", oi.getDriveTrainForward());
+    SmartDashboard.putNumber("Drivetrain Controller Rotate", oi.getDriveTrainRotate());
+  }
 
   /**
    * This autonomous (along with the chooser code above) shows how to select between different
@@ -84,9 +89,7 @@ public class Robot extends TimedRobot {
   /** This function is called once when teleop is enabled. */
   @Override
   public void teleopInit() {
-    double forward = oi.getDriveTrainForward();
-    double rotate = oi.getDriveTrainRotate();
-    drivetrain.arcadeDrive(forward, rotate);
+    drivetrain.arcadeDrive(0, 0);
 
 
 
@@ -94,7 +97,11 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during operator control. */
   @Override
-  public void teleopPeriodic() {}
+  public void teleopPeriodic() {
+    double forward = oi.getDriveTrainForward();
+    double rotate = oi.getDriveTrainRotate();
+    drivetrain.arcadeDrive(forward, rotate);
+  }
 
   /** This function is called once when the robot is disabled. */
   @Override
