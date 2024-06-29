@@ -32,8 +32,8 @@ public class drivetrainHardware implements drivetrainHardwareOI {
 
     @Override
     public void setRightSidePower(double val) {
-        right1.set(ControlMode.PercentOutput,-val);
-        right2.set(ControlMode.PercentOutput,val); //Maybe a CAN ID conflict with these ones?
+        right1.set(ControlMode.PercentOutput,val);
+        right2.set(ControlMode.PercentOutput,-val); //Maybe a CAN ID conflict with these ones?
     }
 
     @Override

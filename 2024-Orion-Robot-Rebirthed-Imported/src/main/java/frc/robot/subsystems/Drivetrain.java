@@ -22,7 +22,7 @@ public class Drivetrain {
         double leftSidePower = capInput(forward + rotate, -1., 1.);
         double rightSidePower = capInput(forward - rotate, -1., 1.);
         hardware.setLeftSidePower(leftSidePower*0.8);
-        hardware.setRightSidePower(-rightSidePower*0.8);
+        hardware.setRightSidePower(rightSidePower*0.8);
     }
 
     // public void resetEncoders() {
