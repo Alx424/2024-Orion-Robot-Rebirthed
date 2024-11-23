@@ -21,25 +21,26 @@ public class Drivetrain {
     public void arcadeDrive(double forward, double rotate) {
         double leftSidePower = capInput(forward + rotate, -1., 1.);
         double rightSidePower = capInput(forward - rotate, -1., 1.);
-        hardware.setLeftSidePower(leftSidePower*0.8);
-        hardware.setRightSidePower(rightSidePower*0.8);
+        hardware.setLeftSidePower(leftSidePower);
+        hardware.setRightSidePower(rightSidePower);
     }
 
-    // public void resetEncoders() {
-    //     hardware.resetEncoders();
-    // }
+    public void resetEncoders() {
+        hardware.resetEncoderPos();
+    }
 
-    // public double getEncoderPos() {
-    //     return ((hardware.getLeftEncoderPos() + hardware/getRightEncoderPos()) / 2);
-    // }
+    public double getEncoderPos() {
+        // return ((hardware.getLeftEncoderPos() + hardware/getRightEncoderPos()) / 2);
+        return hardware.getLeftEncoderPos();
+    }
 
     public double getAngle() {
         return hardware.getAngle() - offsetAngle;
     }
 
-    // public double getHeading() {
-    //     return hardware.getAngle % 360.;
-    // }
+    public double getHeading() {
+        return hardware.getAngle() % 360.;
+    }
 
     private double convertEncoder(double encoderPos) {
         // ratio needs to be tuned
