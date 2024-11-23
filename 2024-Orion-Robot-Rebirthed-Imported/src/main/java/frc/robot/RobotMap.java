@@ -11,4 +11,7 @@ public class RobotMap {
     // Turret Motor CAN IDs (to be assigned)
     public static final int SEESAW_MOTOR = 4;
     public static final int SEESAW_INTAKE_MOTOR = 5;
+
+    // Set drivetrain axes mode
+    public static final Boolean SINGLE_JOYSTICK = false;
 }

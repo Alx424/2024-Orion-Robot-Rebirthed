@@ -2,6 +2,7 @@ package frc.robot.hardware;
 
 import com.ctre.phoenix.*;
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -23,22 +24,24 @@ public class drivetrainHardware implements drivetrainHardwareOI {
         left2 = new TalonSRX(RobotMap.DRIVE_LEFT_2);
         right1 = new TalonSRX(RobotMap.DRIVE_RIGHT_1);
         right2 =new TalonSRX(RobotMap.DRIVE_RIGHT_2);
+
+        left2.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
     }
     @Override
     public void setLeftSidePower(double val) {
         left1.set(ControlMode.PercentOutput, val);
-        left2.set(ControlMode.PercentOutput, val); //Maybe a CAN ID conflict with these ones?
+        left2.set(ControlMode.PercentOutput, val);
     }
 
     @Override
     public void setRightSidePower(double val) {
         right1.set(ControlMode.PercentOutput,val);
-        right2.set(ControlMode.PercentOutput,-val); //Maybe a CAN ID conflict with these ones?
+        right2.set(ControlMode.PercentOutput,-val);
     }
 
     @Override
     public double getLeftEncoderPos() {
-        return 0;
+        return left2.getSelectedSensorPosition();
     }
 
     @Override

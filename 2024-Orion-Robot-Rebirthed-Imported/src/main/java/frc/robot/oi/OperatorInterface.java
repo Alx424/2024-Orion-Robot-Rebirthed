@@ -1,14 +1,15 @@
 package frc.robot.oi;
 
 import edu.wpi.first.wpilibj.Joystick;
+import frc.robot.RobotMap;
 
 public class OperatorInterface implements IOperatorInterface {
     private Joystick drivetrainController;
     private Joystick operatorController;
 
     public OperatorInterface() {
-        drivetrainController = new Joystick(2);
-        operatorController = new Joystick(3);
+        drivetrainController = new Joystick(0);
+        operatorController = new Joystick(1);
     }
 
     @Override
@@ -19,7 +20,7 @@ public class OperatorInterface implements IOperatorInterface {
 
     @Override
     public double getDriveTrainRotate() {
-        return drivetrainController.getRawAxis(0);
+        return RobotMap.SINGLE_JOYSTICK?drivetrainController.getRawAxis(0):drivetrainController.getRawAxis(3);
     }
 
 

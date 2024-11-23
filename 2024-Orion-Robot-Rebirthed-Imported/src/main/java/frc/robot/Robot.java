@@ -101,6 +101,8 @@ public class Robot extends TimedRobot {
     double forward = oi.getDriveTrainForward();
     double rotate = oi.getDriveTrainRotate();
     drivetrain.arcadeDrive(forward, rotate);
+    
+    System.out.println("Encoder Position:" + drivetrain.getEncoderPos());
   }
 
   /** This function is called once when the robot is disabled. */
